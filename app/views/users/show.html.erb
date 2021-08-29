@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row-lg-4">
+    <h1>User info</h1>
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format:'jpeg', fallback: "no_image.jpg" %>
+      <h3>name:<%= @user.name %></h3>
+      <h3>introduction:<%= @user.introduction %></h3>
+    <h1>New Book</h1>
+  </div>
+  <div class="row-lg-8">
+    <h1>Books</h1>
+  </div>
+</div>
