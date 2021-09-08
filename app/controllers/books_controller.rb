@@ -4,6 +4,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     @book.save
+    redirect_to books_path
   end
 
   def show
@@ -11,7 +12,9 @@ class BooksController < ApplicationController
   end
 
   def index
+    @user = current_user
     @books = Book.all
+    @book = Book.new
   end
 
   private
