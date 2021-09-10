@@ -1,11 +1,13 @@
-<p></p>
-  <% if @book.errors.any? %>
-  <%= @book.errors.count %>errors prohibited this obj from being saved:
-  <% @book.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
 <div class="container">
+  <div class="row text-red">
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %>errors prohibited this obj from being saved:
+    <br>
+    <% @book.errors.full_messages.each do |message| %>
+      ・<%= message %><br>
+    <% end %>
+  <% end %>
+  </div>
   <div class="row">
   <%= render '/list' %>
     <div class="col-lg-8 offset-1">
@@ -22,7 +24,9 @@
         <% @books.each do |book| %>
           <tr>
             <td style="width:10%">
+              <%= link_to user_path(book.user.id) do %>
               <%= attachment_image_tag @user, :profile_image, size:"40x40", format:'jpeg', fallback: "no_image.jpg" %>
+              <% end %>
             </td>
             <td style="width:35%"><%= link_to "#{book.title}", book_path(book.id)  %></td>
             <td style="width:55%"><%= book.body %></td>

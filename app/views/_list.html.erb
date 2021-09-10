@@ -12,27 +12,19 @@
         <th><%= @user.introduction %></th>
       </tr>
     </table>
-    <% if @user.id == current_user.id %>
       <%= link_to edit_user_path(@user.id) do %>
         <button type="button" class="btn btn-outline-secondary btn-sm btn-block">
           <i class="fas fa-user-cog"></i>
         </button>
       <% end %>
-    <% else %>
-      <%= link_to user_path(current_user.id) do %>
-        <button type="button" class="btn btn-outline-secondary btn-sm btn-block">
-          <i class="fas fa-user-cog"></i>
-        </button>
-      <% end %>
-    <% end %>
     <p></p>
-    <h2>New Book</h2>
+    <h2>New book</h2>
     <%= form_with model:@book,local:true do |f| %>
       <p>Title</p>
       <%= f.text_field :title %>
       <p>Opinion</p>
       <%= f.text_area :body %>
       <br>
-      <%= f.submit 'create book', class:'btn btn-success' %>
+      <%= f.submit 'Create Book', class:'btn btn-success' %>
     <% end %>
   </div>
