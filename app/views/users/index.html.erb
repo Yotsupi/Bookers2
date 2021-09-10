@@ -1,39 +1,28 @@
+<p></p>
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
-      <h2>User info</h2>
-        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format:'jpeg', fallback: "no_image.jpg" %>
-        <h4>name:<%= @user.name %></h4>
-        <h4>introduction:<%= @user.introduction %></h4>
-        <%= link_to "編集", edit_user_path(@user.id) %>
-
-      <h2>New Book</h2>
-      <%= form_with model:@book,local:true do |f| %>
-        <p>Title</p>
-        <%= f.text_field :title %>
-        <p>Opinion</p>
-        <%= f.text_area :body %>
-        <br>
-        <%= f.submit 'create book' %>
-      <% end %>
-    </div>
-    <div class="col-lg-8">
+  <%= render '/list' %>
+    <div class="col-lg-8 offset-1">
       <h2>Users</h2>
       <table class="table">
-        <tr>
-          <th>image</th>
-          <th>name</th>
-          <th></th>
-        </tr>
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td>
-              <%= user.profile_image %>
+            <td style="width:30%">
+              <%= attachment_image_tag @user, :profile_image, size:"40x40", format:'jpeg', fallback: "no_image.jpg" %>
             </td>
-            <td><%= user.name %></td>
-            <td><%= link_to "show", user_path(user.id) %></td>
+            <td style="width:50%"><%= user.name %></td>
+            <td style="width:20%"><%= link_to "Show", user_path(user.id) %></td>
           </tr>
         <% end %>
+        </tbody>
 
       </table>
     </div>

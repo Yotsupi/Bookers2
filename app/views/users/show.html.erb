@@ -1,35 +1,26 @@
+<p></p>
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
-      <h2>User info</h2>
-        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format:'jpeg', fallback: "no_image.jpg" %>
-        <h4>name:<%= @user.name %></h4>
-        <h4>introduction:<%= @user.introduction %></h4>
-        <%= link_to "編集", edit_user_path %>
-
-      <h2>New Book</h2>
-      <%= form_with model:@book,local:true do |f| %>
-        <p>Title</p>
-        <%= f.text_field :title %>
-        <p>Opinion</p>
-        <%= f.text_area :body %>
-        <br>
-        <%= f.submit 'create book' %>
-      <% end %>
-    </div>
-    <div class="col-lg-8">
-      <h2>Book Detail</h2>
-        <table class="table">
+    <%= render '/list' %>
+    <div class="col-lg-8 offset-1">
+      <h2>Books</h2>
+        <table class="table table-hover text-left">
+          <thead>
           <tr>
-            <th>Title</th>
-            <th>Opinion</th>
+            <th style="width:10%"></th>
+            <th style="width:35%">Title</th>
+            <th style="width:55%">Opinion</th>
           </tr>
+          </thead>
+          <tbody>
           <% @books.each do |book| %>
             <tr>
-              <td><%= book.title %></td>
+              <td><%= attachment_image_tag @user, :profile_image, size:"40x40", format:'jpeg', fallback: "no_image.jpg" %></td>
+              <td><%= link_to "#{book.title}", book_path(book.id) %></td>
               <td><%= book.body %></td>
             </tr>
           <% end %>
+          </tbody>
         </table>
     </div>
   </div>
