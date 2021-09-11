@@ -11,14 +11,14 @@
       <table class="table">
         <tr>
           <td>
-            <%= link_to user_path(@book.user.id) do %>
-            <%= attachment_image_tag @book.user, :profile_image, size:"40x40", format:'jpeg', fallback: "no_image.jpg" %>
+            <%= link_to user_path(@book_1.user.id) do %>
+            <%= attachment_image_tag @book_1.user, :profile_image, size:"40x40", format:'jpeg', fallback: "no_image.jpg" %>
             <br>
-            <%= @book.user.name %>
+            <%= @book_1.user.name %>
             <% end %>
           </td>
-          <td><%= link_to "#{@book.title}", book_path(@book.id) %></td>
-          <td><%= @book.body %></td>
+          <td><%= link_to "#{@book_1.title}", book_path(@book_1.id) %></td>
+          <td><%= @book_1.body %></td>
               <% if @user == current_user %>
                 <td>
                 <%= link_to edit_book_path do %>
@@ -26,7 +26,7 @@
                 <% end %>
                 </td>
                 <td>
-                <%= link_to book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
+                <%= link_to book_path(@book_1.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
                   <button type="button" class="btn btn-danger">Destroy</button>
                 <% end %>
                 </td>
