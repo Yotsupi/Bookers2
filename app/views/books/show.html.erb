@@ -1,7 +1,12 @@
+<% if flash[:notice] %>
+    <div class="flash">
+         <%= flash[:notice] %>
+    </div>
+<% end %>
 <div class="container">
   <div class="row">
     <%= render '/list' %>
-    <div class="col-lg-8 offset-1">
+    <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
         <tr>
@@ -21,7 +26,7 @@
                 <% end %>
                 </td>
                 <td>
-                <%= link_to book_path(@book.id), method: :delete do %>
+                <%= link_to book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
                   <button type="button" class="btn btn-danger">Destroy</button>
                 <% end %>
                 </td>
